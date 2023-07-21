@@ -19,7 +19,7 @@ if 'responses' not in st.session_state:
 if 'requests' not in st.session_state:
     st.session_state['requests'] = []
 
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="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")
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="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")
 
 # if 'buffer_memory' not in st.session_state:
 st.session_state['buffer_memory'] = ConversationBufferWindowMemory(k=3,return_messages=True)
@@ -45,9 +45,12 @@ with textcontainer:
         with st.spinner("typing..."):
             conversation_string = get_conversation_string()
             print("conversation string-"+conversation_string)
-            refined_query = query_refiner(conversation_string, query)
-            st.subheader("Refined Query:")
-            print("Refined_query" + refined_query)
+            
+            # refined_query = query_refiner(conversation_string, query)
+            # switching off query refinement as of now
+            # st.subheader("Refined Query:")
+            # print("Refined_query" + refined_query)
+
             context = find_match(query) # instead of using refined query
             print("context-", context)
             response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
