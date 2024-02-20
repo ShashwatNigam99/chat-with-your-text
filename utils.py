@@ -2,11 +2,11 @@ from sentence_transformers import SentenceTransformer
 import pinecone
 import openai
 import streamlit as st
-openai.api_key = "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"
+openai.api_key = "<openai key>"
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 pinecone.init(
-	api_key='695b89d1-176a-44bf-a68a-0687eeee78f3',      
+	api_key='<pinecone key>',      
 	environment='us-west1-gcp-free'
 )
 index = pinecone.Index('langchain-project')
